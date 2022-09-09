@@ -35,10 +35,15 @@ std::string ReadDataFromFileLinebyLine() {
     return ret.str();
 }
 
-
-
+void ShowBase() {
+    std::cout << std::showbase;
+    std::cout << std::oct << 20 << " " << 1024 <<"\n";
+    std::cout << std::hex << 20 << " " << 1024 <<"\n";
+    std::cout << std::dec << 20 << " " << 1024 <<"\n";
+    std::cout << std::noshowbase;
+}
 int main() {
-
+    ShowBase();
 
     return 0;
 }

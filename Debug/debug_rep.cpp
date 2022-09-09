@@ -1,30 +1,5 @@
-#include<iostream>
-#include<sstream>
-#include<vector>
-#include<iomanip>
-#include<algorithm>
 
-// 打印单个变量的值
-// 区分了普通变量和指针型变量
-template<class T>
-std::string debug_rep(const T &t);
-template<class T>
-std::string debug_rep(T *p);
-
-// 可以打印多个类型不同的变量
-template<typename T, typename... Args>
-std::string debug_rep(const T& t, const Args&... rset);
-
-// 加上了变量命
-// 格式为
-// var_name1    : val1
-// varname2     : val2
-// ---------debug_rep end---------
-template<typename T>
-std::string debug_rep_with_name(std::vector<std::string>&&names, const T& t);
-template<typename T, typename... Args>
-std::string debug_rep_with_name(std::vector<std::string>&&names, const T& t, const Args&... rset);
-
+#include "debug_rep.h"
 
 template<class T>
 std::string debug_rep(const T &t) {
@@ -65,14 +40,6 @@ std::string debug_rep_with_name(std::vector<std::string>&&names, const T& t, con
     names.erase(names.begin());
     return ret.str() + "\n" + debug_rep_with_name(std::move(names), rset...);
 }
-
-
-template<typename T>
-std::string PrintVec(const std::vector<T>& vec);
-template<typename T>
-std::string PrintVecIdx(const std::vector<T>& vec);
-template<typename T>
-std::string PrintArry(T *Begin, T *End);
 
 template<typename T>
 std::string PrintVec(const std::vector<T>& vec) {
